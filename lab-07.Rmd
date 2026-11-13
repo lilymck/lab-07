@@ -26,16 +26,24 @@ glimpse(college_grad_df)
 # Exercise 1: Exploratory Data Analysis
 
 ```{r}
-#your code here
+college_grad_df %>%
+  group_by(major_category) %>%
+  ggplot(data = college_grad_df, mapping = aes(x = median)) +
+  geom_histogram(binwidth = 2500)
+  
 ```
 
-*Your explanation*
+*Your explanation* 
 
 
 # Exercise 2: Exploring relationship
 
 ```{r}
-#your code here
+college_grad_df %>%
+  filter(!is.na(sharewomen)) %>%
+  filter(!is.na(median))
+  ggplot(college_grad_df, mapping = aes(x = sharewomen, y = median)) +
+  geom_point(method = lm, se = FALSE)
 ```
 
 *Your explanation*
